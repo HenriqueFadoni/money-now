@@ -1,44 +1,60 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import BaseCurrencySelector from './components/BaseCurrencySelector';
+import ToCurrencySelector from './components/ToCurrencySelector';
+import Inputs from './components/Inputs';
+
 class App extends Component {
   state = {
-    base: '',
-    toCurrency: '',
-    baseValue: 0,
-    currencyValue: 0,
-    date: '',
-    rates: {}
+    currencyExchange: {
+      base: '',
+      toCurrency: '',
+      baseValue: 0,
+      currencyValue: 0,
+      date: '',
+      rates: {}
+    },
+    showInput: false
   }
 
   async componentDidMount() {
-    const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`);
-    this.setState({ rates: data.rates });
+    const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${this.state.currencyExchange.base}`); // ANOTHER
+    let update = {...this.state.currencyExchange};
+    update.rates = data.rates;
+    this.setState({ currencyExchange: update }); // ANOTHER 2
   };
 
   selectBaseHandler = event => this.getData(event.target.value);
 
   getData = async (currency) => {
-    const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${currency}`);
-    this.setState({
-      base: data.base,
-      date: data.date,
-      rates: data.rates
-    });
+    const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${currency}`); // ANOTHER
+    let update = {...this.state.currencyExchange};
+    update.base = data.base;
+    update.date = data.date;
+    update.rates = data.rates;
+    this.setState({ currencyExchange: update }); // ANOTHER 2
   }
 
-  selectToHandler = event => this.setState({ toCurrency: event.target.value });
+  selectToHandler = event => {
+    let update = {...this.state.currencyExchange};
+    update.toCurrency = event.target.value;
+    this.setState({ currencyExchange: update }); // ANOTHER 2
+  };
 
   findRate = () => {
-    const value = Math.round(this.state.rates[this.state.toCurrency] * 100) / 100;
-    this.setState({ 
-      baseValue: 1,
-      currencyValue: value
+    const value = Math.round(this.state.currencyExchange.rates[this.state.currencyExchange.toCurrency] * 100) / 100;
+    let update = {...this.state.currencyExchange};
+    update.baseValue = 1;
+    update.currencyValue = value;
+    this.setState({
+      currencyExchange: update, 
+      showInput: true
     });
   }
 
   render() {
-    const rates = this.state.rates;
+    const rates = this.state.currencyExchange.rates;
     let arrayRates = [];
 
     for (let rate in rates) {
@@ -51,21 +67,20 @@ class App extends Component {
 
     return (
       <div className="App">
-        <select id="base-currency-selector" onChange={event => this.selectBaseHandler(event)} required>
-          <option value="" defaultValue>Please Select a Base Currency</option>
-          {arrayRates}
-        </select>
+        <BaseCurrencySelector 
+          rates={arrayRates}
+          selectHandler={this.selectBaseHandler}/>
 
-        <select id="to-currency-selector" onChange={event => this.selectToHandler(event)} required>
-          <option value="" defaultValue>Please Select a Currency to Convert</option>
-          {arrayRates}
-        </select>
+        <ToCurrencySelector
+          rates={arrayRates}
+          selectHandler={this.selectToHandler}/>
 
-        {/* Make it invisible */}
-        <div>
-          <input type="number" placeholder={this.state.baseValue}></input>
-          <input type="number" placeholder={this.state.currencyValue}></input>
-        </div>
+        {
+          this.state.showInput ? 
+            <Inputs 
+            baseValue={this.state.currencyExchange.baseValue}
+            currencyValue={this.state.currencyExchange.currencyValue}/> : null
+        }
 
         {/* Button Block if Base and Currency not selected */}
         <button onClick={this.findRate}>Find Currency</button>
