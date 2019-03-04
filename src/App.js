@@ -95,7 +95,9 @@ class App extends Component {
           baseValue={this.state.currencyExchange.baseValue}
           currencyValue={this.state.currencyExchange.currencyValue}
           findRate={this.findRate} 
-          showBtn={button} />
+          showBtn={button} 
+          baseCoin={this.state.currencyExchange.base}
+          currencyCoin={this.state.currencyExchange.toCurrency}/>
 
       </div>
     );

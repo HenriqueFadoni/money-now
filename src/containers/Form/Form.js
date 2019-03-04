@@ -11,7 +11,12 @@ class Form extends PureComponent {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.baseValue !== this.props.baseValue || prevProps.currencyValue !== this.props.currencyValue) {
+        if (prevProps.baseCoin !== this.props.baseCoin || prevProps.currencyCoin !== this.props.currencyCoin) {
+            this.setState({
+                base: this.props.baseValue,
+                currency: this.props.currencyValue
+            });
+        } else if (prevProps.baseValue !== this.props.baseValue || prevProps.currencyValue !== this.props.currencyValue) {
             this.setState({
                 base: this.props.baseValue,
                 currency: this.props.currencyValue
