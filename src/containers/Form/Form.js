@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 
-import FindRate from './FindRate';
+import FindRate from './Button/FindRate';
+import BaseInput from './BaseInput/BaseInput';
+import CurrencyInput from './CurrencyInput/CurrencyInput';
 
-class Inputs extends PureComponent {
+class Form extends PureComponent {
     state = {
         base: null,
         currency: null
@@ -14,6 +16,8 @@ class Inputs extends PureComponent {
                 base: this.props.baseValue,
                 currency: this.props.currencyValue
             });
+        } else {
+            return
         }
     }
 
@@ -26,17 +30,11 @@ class Inputs extends PureComponent {
     render() {
         let showInputs = (
             <>
-                <input
-                    nam="baseSelector"
-                    type="number"
-                    placeholder={this.props.baseValue}
-                    onChange={event => this.baseChangeHandler(event)}></input>
-                    
-                <input
-                    nam="currencySelector"
-                    type="number"
-                    placeholder={!this.state.currency ? this.props.currencyValue : this.state.currency}
-                    readOnly></input>
+                <BaseInput 
+                    base={this.props.baseValue}
+                    changeHandler={this.baseChangeHandler}/>
+                <CurrencyInput 
+                    currency={this.state.currency} />
             </>
         );
 
@@ -51,4 +49,4 @@ class Inputs extends PureComponent {
     }
 };
 
-export default Inputs;
+export default Form;

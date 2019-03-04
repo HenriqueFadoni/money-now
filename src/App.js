@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import BaseCurrencySelector from './components/BaseCurrencySelector';
 import ToCurrencySelector from './components/ToCurrencySelector';
-import Inputs from './components/Inputs';
+import Form from './containers/Form/Form';
 
 class App extends Component {
   state = {
@@ -90,7 +90,7 @@ class App extends Component {
           rates={arrayRates}
           selectHandler={this.selectToHandler} />
 
-        <Inputs
+        <Form
           showInputs={this.state.showInput}
           baseValue={this.state.currencyExchange.baseValue}
           currencyValue={this.state.currencyExchange.currencyValue}
