@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import BaseCurrencySelector from './components/BaseCurrencySelector';
 import ToCurrencySelector from './components/ToCurrencySelector';
-import FindRate from './components/FindRate';
 import Inputs from './components/Inputs';
 
 class App extends Component {
@@ -49,33 +48,38 @@ class App extends Component {
     this.setState({ currencyExchange: update });
   };
 
-  findRate = () => {
-    if (this.state.currencyExchange.base !== "" && this.state.currencyExchange.toCurrency ) {
-      const value = Math.round(this.state.currencyExchange.rates[this.state.currencyExchange.toCurrency] * 100) / 100;
-      let update = {
-        ...this.state,
-        currencyExchange: {
-          ...this.state.currencyExchange,
-          baseValue: 1,
-          currencyValue: value
-        },
-        showInput: true
-      };
-  
-      this.setState(update);
-    }
+  findRate = event => {
+    event.preventDefault();
+    event.currentTarget.reset();
+
+    const value = Math.round(this.state.currencyExchange.rates[this.state.currencyExchange.toCurrency] * 100) / 100;
+    let update = {
+      ...this.state,
+      currencyExchange: {
+        ...this.state.currencyExchange,
+        baseValue: 1,
+        currencyValue: value
+      },
+      showInput: true
+    };
+
+    this.setState(update);
   }
 
   render() {
     const rates = this.state.currencyExchange.rates;
     let arrayRates = [];
+    let button = false;
 
     for (let rate in rates) {
-      arrayRates.push( 
-        <option 
-          value={`${rate}`} 
-          key={`${rate}`} > {rate} </option> );
+      arrayRates.push(
+        <option
+          value={`${rate}`}
+          key={`${rate}`} > {rate} </option>);
     }
+
+    if (this.state.currencyExchange.base !== "" && this.state.currencyExchange.toCurrency) button = true;
+
     return (
       <div className="App">
         <BaseCurrencySelector
@@ -86,14 +90,13 @@ class App extends Component {
           rates={arrayRates}
           selectHandler={this.selectToHandler} />
 
-        {
-          this.state.showInput ?
-          <Inputs
-            baseValue={this.state.currencyExchange.baseValue}
-            currencyValue={this.state.currencyExchange.currencyValue} /> : null
-        }
-        
-        <FindRate findRate={this.findRate} />
+        <Inputs
+          showInputs={this.state.showInput}
+          baseValue={this.state.currencyExchange.baseValue}
+          currencyValue={this.state.currencyExchange.currencyValue}
+          findRate={this.findRate} 
+          showBtn={button} />
+
       </div>
     );
   }

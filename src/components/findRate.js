@@ -2,7 +2,11 @@ import React from 'react';
 
 const FindRate = props => (
     <>
-        <button onClick={props.findRate}>Find Currency</button>
+        {
+            props.show ?
+            <button type="submit">Find Currency</button> :
+            <button disabled>Find Currency</button>
+        }
     </>
 );
 
