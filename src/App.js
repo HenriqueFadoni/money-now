@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import BaseCurrencySelector from './components/BaseCurrencySelector';
 import ToCurrencySelector from './components/ToCurrencySelector';
+import FindRate from './components/FindRate';
 import Inputs from './components/Inputs';
 
 class App extends Component {
@@ -92,7 +93,7 @@ class App extends Component {
             currencyValue={this.state.currencyExchange.currencyValue} /> : null
         }
         
-        <button onClick={this.findRate}>Find Currency</button>
+        <FindRate findRate={this.findRate} />
       </div>
     );
   }
