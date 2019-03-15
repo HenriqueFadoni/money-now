@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 
 import FindRate from './Button/FindRate';
-import BaseInput from './BaseInput/BaseInput';
-import CurrencyInput from './CurrencyInput/CurrencyInput';
+import BaseInput from './Inputs/Base/BaseInput';
+import CurrencyInput from './Inputs/Currency/CurrencyInput';
 
 class Form extends PureComponent {
     state = {

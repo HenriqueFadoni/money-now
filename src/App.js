@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import BaseCurrencySelector from './components/BaseCurrencySelector';
-import ToCurrencySelector from './components/ToCurrencySelector';
-import Form from './containers/Form/Form';
+import BaseCurrencySelector from './mainPage/Form/Selectors/Base/BaseCurrencySelector';
+import ToCurrencySelector from './mainPage/Form/Selectors/Currency/ToCurrencySelector';
+import Form from './mainPage/Form/Form';
 
 class App extends Component {
   state = {
@@ -91,13 +91,13 @@ class App extends Component {
           selectHandler={this.selectToHandler} />
 
         <Form
-          showInputs={this.state.showInput}
           baseValue={this.state.currencyExchange.baseValue}
           currencyValue={this.state.currencyExchange.currencyValue}
-          findRate={this.findRate} 
-          showBtn={button} 
+          currencyCoin={this.state.currencyExchange.toCurrency}
           baseCoin={this.state.currencyExchange.base}
-          currencyCoin={this.state.currencyExchange.toCurrency}/>
+          findRate={this.findRate} 
+          showInputs={this.state.showInput}
+          showBtn={button} />
 
       </div>
     );
