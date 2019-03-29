@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './sass/main.scss';
 
 import BaseCurrencySelector from './mainPage/Form/Selectors/Base/BaseCurrencySelector';
 import ToCurrencySelector from './mainPage/Form/Selectors/Currency/ToCurrencySelector';
@@ -81,25 +82,29 @@ class App extends Component {
     if (this.state.currencyExchange.base !== "" && this.state.currencyExchange.toCurrency) button = true;
 
     return (
-      <div className="App">
-        <BaseCurrencySelector
-          rates={arrayRates}
-          selectHandler={this.selectBaseHandler} />
+      <div className="home">
+        <h1 className="h1-white">
+          money <span className="text-green">now</span>
+        </h1>
 
-        <ToCurrencySelector
-          rates={arrayRates}
-          selectHandler={this.selectToHandler} />
+        <section className="form">
+          <BaseCurrencySelector
+            rates={arrayRates}
+            selectHandler={this.selectBaseHandler} />
 
-        <Form
-          baseValue={this.state.currencyExchange.baseValue}
-          currencyValue={this.state.currencyExchange.currencyValue}
-          currencyCoin={this.state.currencyExchange.toCurrency}
-          baseCoin={this.state.currencyExchange.base}
-          findRate={this.findRate} 
-          showInputs={this.state.showInput}
-          showBtn={button} />
-        
-        
+          <ToCurrencySelector
+            rates={arrayRates}
+            selectHandler={this.selectToHandler} />
+
+          <Form
+            baseValue={this.state.currencyExchange.baseValue}
+            currencyValue={this.state.currencyExchange.currencyValue}
+            currencyCoin={this.state.currencyExchange.toCurrency}
+            baseCoin={this.state.currencyExchange.base}
+            findRate={this.findRate}
+            showInputs={this.state.showInput}
+            showBtn={button} />
+        </section>
       </div>
     );
   }

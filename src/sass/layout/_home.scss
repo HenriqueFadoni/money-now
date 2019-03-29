@@ -1,0 +1,13 @@
+.home {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: minmax(min-content, auto-fit);
+    grid-template-rows: [title-start] 40vh [title-end form-start] 40vh [form-end];
+    grid-gap: 4rem;
+
+    padding: 4rem;
+
+    justify-items: center;
+    align-items: center;
+}
