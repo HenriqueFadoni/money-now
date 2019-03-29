@@ -98,7 +98,8 @@ class App extends Component {
           findRate={this.findRate} 
           showInputs={this.state.showInput}
           showBtn={button} />
-
+        
+        
       </div>
     );
   }
