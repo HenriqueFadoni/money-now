@@ -44,12 +44,10 @@ class Form extends PureComponent {
         );
 
         return (
-            <div>
-                <form onSubmit={event => this.props.findRate(event)}>
-                    {this.props.showInputs ? showInputs : null}
-                    <FindRate show={this.props.showBtn} />
-                </form>
-            </div>
+            <form onSubmit={event => this.props.findRate(event)}>
+                {this.props.showInputs ? showInputs : null}
+                <FindRate show={this.props.showBtn} />
+            </form>
         );
     }
 };

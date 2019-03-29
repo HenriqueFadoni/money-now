@@ -96,14 +96,16 @@ class App extends Component {
             rates={arrayRates}
             selectHandler={this.selectToHandler} />
 
-          <Form
-            baseValue={this.state.currencyExchange.baseValue}
-            currencyValue={this.state.currencyExchange.currencyValue}
-            currencyCoin={this.state.currencyExchange.toCurrency}
-            baseCoin={this.state.currencyExchange.base}
-            findRate={this.findRate}
-            showInputs={this.state.showInput}
-            showBtn={button} />
+          <div className="form__container">
+            <Form
+              baseValue={this.state.currencyExchange.baseValue}
+              currencyValue={this.state.currencyExchange.currencyValue}
+              currencyCoin={this.state.currencyExchange.toCurrency}
+              baseCoin={this.state.currencyExchange.base}
+              findRate={this.findRate}
+              showInputs={this.state.showInput}
+              showBtn={button} />
+          </div>
         </section>
       </div>
     );

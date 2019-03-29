@@ -2,7 +2,7 @@
     height: 100%;
 
     display: grid;
-    grid-template-columns: minmax(min-content, auto-fit);
+    grid-template-columns: minmax(min-content);
     grid-template-rows: [title-start] 40vh [title-end form-start] 40vh [form-end];
     grid-gap: 4rem;
 

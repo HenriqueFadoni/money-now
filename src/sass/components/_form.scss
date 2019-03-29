@@ -1,0 +1,27 @@
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, 10rem));
+    grid-template-rows: repeat(3, minmax(min-content, 5rem));
+    grid-gap: 4rem;
+
+    &__container {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 2;
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 5rem 6rem;
+            grid-gap: 4rem;
+        }
+    }
+
+    &__button {
+        grid-column: 1 / span 2;
+        grid-row: 2 / 3;
+
+        justify-self: center;
+        align-self: center;
+    }
+}
+

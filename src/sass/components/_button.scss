@@ -1,0 +1,76 @@
+.btn {
+    border: none;
+    border-radius: 3rem;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.form__button {
+
+    position: relative;
+    overflow: hidden;
+
+    &:disabled,
+    &:disabled:hover {
+        background-image: 
+            linear-gradient(
+                to right,
+                $color-white,
+                $color-grey-light
+            );
+        color: $color-grey-dark;
+    }
+
+    &,
+    &:link,
+    &:visited {
+        background-image: 
+            linear-gradient(
+                to right,
+                $color-primary,
+                $color-primary-dark
+            );
+        color: $color-white;
+        height: 70%;
+        width: 75%;
+        transition: all .2s;
+    }
+
+    & > * {
+        margin-top: 1.2rem;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+    }
+
+    &-invisible {
+        position: absolute;
+        left: 0;
+        top: -120%;
+    }
+
+    &:hover {
+        background-image: 
+            linear-gradient(
+                to left,
+                $color-primary,
+                $color-primary-dark
+            );
+        width: 65%;
+    }
+
+    &:hover &-visible {
+        transform: translateY(100%);
+    }
+
+    &:hover &-invisible {
+        top: 0;
+    }
+
+    &:active {
+        width: 60%;
+        margin-top: -1rem;
+    }
+}
