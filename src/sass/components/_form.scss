@@ -4,6 +4,7 @@
     grid-template-rows: repeat(3, minmax(min-content, 5rem));
     grid-gap: 4rem;
 
+    // CHOOSE ANOTHER NAME
     &__container {
         grid-column: 1 / span 2;
         grid-row: 2 / span 2;
