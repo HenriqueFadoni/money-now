@@ -5,6 +5,7 @@ import './sass/main.scss';
 import BaseCurrencySelector from './mainPage/Form/Selectors/Base/BaseCurrencySelector';
 import ToCurrencySelector from './mainPage/Form/Selectors/Currency/ToCurrencySelector';
 import Form from './mainPage/Form/Form';
+import BackgroundVideo from './mainPage/BackgroundVideo/BackgroundVideo';
 
 class App extends Component {
   state = {
@@ -82,32 +83,35 @@ class App extends Component {
     if (this.state.currencyExchange.base !== "" && this.state.currencyExchange.toCurrency) button = true;
 
     return (
-      <div className="home">
-        <h1 className="h1-white">
-          money <span className="text-green">now</span>
-        </h1>
+      <>
+        <BackgroundVideo />
+        <div className="home">
+          <h1 className="h1-white">
+            money <span className="text-green">now</span>
+          </h1>
 
-        <section className="form">
-          <BaseCurrencySelector
-            rates={arrayRates}
-            selectHandler={this.selectBaseHandler} />
+          <section className="form">
+            <BaseCurrencySelector
+              rates={arrayRates}
+              selectHandler={this.selectBaseHandler} />
 
-          <ToCurrencySelector
-            rates={arrayRates}
-            selectHandler={this.selectToHandler} />
+            <ToCurrencySelector
+              rates={arrayRates}
+              selectHandler={this.selectToHandler} />
 
-          <div className="form__container">
-            <Form
-              baseValue={this.state.currencyExchange.baseValue}
-              currencyValue={this.state.currencyExchange.currencyValue}
-              currencyCoin={this.state.currencyExchange.toCurrency}
-              baseCoin={this.state.currencyExchange.base}
-              findRate={this.findRate}
-              showInputs={this.state.showInput}
-              showBtn={button} />
-          </div>
-        </section>
-      </div>
+            <div className="form__container">
+              <Form
+                baseValue={this.state.currencyExchange.baseValue}
+                currencyValue={this.state.currencyExchange.currencyValue}
+                currencyCoin={this.state.currencyExchange.toCurrency}
+                baseCoin={this.state.currencyExchange.base}
+                findRate={this.findRate}
+                showInputs={this.state.showInput}
+                showBtn={button} />
+            </div>
+          </section>
+        </div>
+      </>
     );
   }
 }
