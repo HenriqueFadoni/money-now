@@ -1,0 +1,13 @@
+// MEDIA QUERIES MANAGER
+
+// TABLET = 600px - 1000px
+// PHONE = 0 - 600px
+
+@mixin resize($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content }; // 500px
+    }
+    @if $breakpoint == tablet {
+        @media only screen and (max-width: 62.5em) { @content }; // 1000px
+    }
+}

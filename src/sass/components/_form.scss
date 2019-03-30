@@ -4,10 +4,19 @@
     grid-template-rows: repeat(3, minmax(min-content, 5rem));
     grid-gap: 4rem;
 
-    // CHOOSE ANOTHER NAME
+    @include resize(phone) {
+        grid-template-columns: 25rem;
+        grid-template-rows: repeat(3, minmax(min-content, 10rem));
+    };
+
     &__container {
         grid-column: 1 / span 2;
         grid-row: 2 / span 2;
+        
+        @include resize(phone) {
+            grid-column: auto;
+            grid-row: auto;
+        }
 
         form {
             display: grid;
@@ -27,6 +36,12 @@
         color: $color-white;
         border-radius: .4rem;
         border: 1px solid $color-white;
+
+        @include resize(phone) {
+            justify-self: center;
+            align-self: center;
+            padding: 2rem 5rem 2rem 2rem;
+        }
     }
 
     &__result {

@@ -3,6 +3,8 @@
     font-weight: 300;
     text-transform: uppercase;
     color: $color-white;
+
+    @include resize(phone) { font-size: 4rem };
 }
 
 .h2-white {

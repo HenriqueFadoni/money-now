@@ -2,7 +2,7 @@
     height: 100%;
 
     display: grid;
-    grid-template-columns: minmax(min-content);
+    grid-template-columns: minmax(20rem, 1fr);
     grid-template-rows: [title-start] 40vh [title-end form-start] 40vh [form-end];
     grid-gap: 4rem;
 
@@ -10,4 +10,6 @@
 
     justify-items: center;
     align-items: center;
+
+    @include resize(phone) { padding: 0 };
 }
