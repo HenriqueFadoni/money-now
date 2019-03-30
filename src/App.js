@@ -85,6 +85,7 @@ class App extends Component {
     return (
       <>
         <BackgroundVideo />
+        
         <div className="home">
           <h1 className="h1-white">
             money <span className="text-green">now</span>

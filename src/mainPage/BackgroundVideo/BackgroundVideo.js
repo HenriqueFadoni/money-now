@@ -1,8 +1,8 @@
 import React from 'react';
 
-import videoMP4 from './New-jumbo.mp4';
-import videoWEBM from './New-jumbo.mp4';
-import videoOGV from './New-jumbo.mp4';
+import videoMP4 from '../../img/New-jumbo.mp4';
+import videoWEBM from '../../img/New-jumbo.mp4';
+import videoOGV from '../../img/New-jumbo.mp4';
 
 const BackgroundVideo = () => (
     <div className="bg-video">

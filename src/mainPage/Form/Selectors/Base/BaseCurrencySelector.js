@@ -1,8 +1,13 @@
 import React from 'react';
 
 const BaseCurrencySelector = props => (
-    <select id="base-currency-selector" onChange={event => props.selectHandler(event)} required>
-        <option value="" defaultValue>Please Select a Currency to Convert</option>
+    <select 
+        id="base-currency-selector" 
+        className="form__selector"
+        onChange={event => props.selectHandler(event)} 
+        required>
+
+        <option value="" defaultValue>Select a Currency</option>
         {props.rates}
     </select>
 );

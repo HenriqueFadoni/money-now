@@ -17,6 +17,18 @@
         }
     }
 
+    &__selector {
+        display: block;
+        padding: 0 5rem;
+
+        appearance: none;
+
+        background: url($bg-selector) no-repeat 95% center; 
+        color: $color-white;
+        border-radius: .4rem;
+        border: 1px solid $color-white;
+    }
+
     &__button {
         grid-column: 1 / span 2;
         grid-row: 2 / 3;
