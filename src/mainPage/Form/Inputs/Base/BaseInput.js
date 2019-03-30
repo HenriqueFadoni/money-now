@@ -1,14 +1,9 @@
 import React from 'react';
 
 const BaseInput = props => (
-    <>
-        <input
-            name="currencyInput"
-            type="number"
-            className="form__currency-input"
-            placeholder={props.base}
-            onChange={event => props.changeHandler(event)}></input>
-    </>
+    <h2 className="form__currency-input">
+        {props.base}
+    </h2>
 );
 
 export default BaseInput;

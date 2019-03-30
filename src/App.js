@@ -77,15 +77,20 @@ class App extends Component {
       arrayRates.push(
         <option
           value={`${rate}`}
-          key={`${rate}`} > {rate} </option>);
+          key={`${rate}`} > 
+            {rate} 
+          </option>
+      );
     }
 
-    if (this.state.currencyExchange.base !== "" && this.state.currencyExchange.toCurrency) button = true;
+    if (this.state.currencyExchange.base !== "" && this.state.currencyExchange.toCurrency) {
+      button = true;
+    }
 
     return (
       <>
         <BackgroundVideo />
-        
+
         <div className="home">
           <h1 className="h1-white">
             money <span className="text-green">now</span>
@@ -104,8 +109,6 @@ class App extends Component {
               <Form
                 baseValue={this.state.currencyExchange.baseValue}
                 currencyValue={this.state.currencyExchange.currencyValue}
-                currencyCoin={this.state.currencyExchange.toCurrency}
-                baseCoin={this.state.currencyExchange.base}
                 findRate={this.findRate}
                 showInputs={this.state.showInput}
                 showBtn={button} />
