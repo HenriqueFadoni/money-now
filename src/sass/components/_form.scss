@@ -13,13 +13,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 5rem 6rem;
-            grid-gap: 4rem;
+            grid-gap: 6rem;
         }
     }
 
     &__selector {
         display: block;
-        padding: 0 5rem;
+        padding: 0 5rem 0 2rem;
 
         appearance: none;
 
@@ -27,6 +27,11 @@
         color: $color-white;
         border-radius: .4rem;
         border: 1px solid $color-white;
+    }
+
+    &__result {
+        justify-self: center;
+        align-self: center;
     }
 
     &__button {
