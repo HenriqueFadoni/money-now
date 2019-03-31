@@ -44,7 +44,7 @@ class App extends Component {
       arrayRates.push(
         <option
           value={`${rate}`}
-          key={`${rate}`} >
+          key={`${rate}`}>
           {rate}
         </option>
       );

@@ -29,7 +29,7 @@ export const getData = () => {
         dispatch(getDataStart());
 
         try {
-            const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=EUR`);
+            const { data } = await axios.get(`https://api.exchangeratesapi.io/latest`);
             let update = {
                 base: 'EUR',
                 date: '',

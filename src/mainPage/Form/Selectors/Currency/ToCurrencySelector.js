@@ -4,10 +4,10 @@ const ToCurrencySelector = props => (
     <select 
         id="to-currency-selector" 
         className="form__selector"
-        onChange={event => props.selectHandler(event)} 
+        onChange={event => props.selectHandler(event)}
         required>
 
-        <option value="" defaultValue>Select a Currency</option>
+        <option value="Default">Select a Currency</option>
         {props.rates}
     </select>
 );
