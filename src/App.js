@@ -32,7 +32,7 @@ class App extends Component {
 
     this.props.onFindRateCalc(this.props.baseExchange.rates[this.props.currencyExchange.toCurrency]);
 
-    this.setState({showInput: true});
+    this.setState({ showInput: true });
   }
 
   render() {
@@ -44,13 +44,13 @@ class App extends Component {
       arrayRates.push(
         <option
           value={`${rate}`}
-          key={`${rate}`} > 
-            {rate} 
-          </option>
+          key={`${rate}`} >
+          {rate}
+        </option>
       );
     }
 
-    if (this.props.baseExchange.base !== "" && this.props.currencyExchange.toCurrency) {
+    if (this.props.currencyExchange.toCurrency) {
       button = true;
     }
 
@@ -74,8 +74,6 @@ class App extends Component {
 
             <div className="form__container">
               <Form
-                baseValue={this.props.currencyExchange.baseValue}
-                currencyValue={this.props.currencyExchange.currencyValue}
                 findRate={this.findRate}
                 showInputs={this.state.showInput}
                 showBtn={button} />

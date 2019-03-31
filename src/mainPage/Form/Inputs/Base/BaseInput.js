@@ -1,9 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 
 const BaseInput = props => (
     <h2 className="h2-white form__result">
-        {props.base}
+        {props.currencyExchange.baseValue}
     </h2>
 );
 
-export default BaseInput;
+const mapStateToProps = state => {
+    return {
+        currencyExchange: state.findRate
+    }
+}
+
+export default connect(mapStateToProps)(BaseInput);
