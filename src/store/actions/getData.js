@@ -22,8 +22,8 @@ const getDataFail = error => {
     return {
         type: actionTypes.GET_DATA_FAIL,
         error: error
-    }
-}
+    };
+};
 
 
 export const getData = () => {
@@ -42,9 +42,9 @@ export const getData = () => {
         } catch (error) {
             let errorMessage = 'Something Went Wrong. Try again later'
             dispatch(getDataFail(errorMessage));
-        }
-    }
-}
+        };
+    };
+};
 
 // ---------------------------------------
 // UPDATE THE STATE BASED ON THE CURRENCY
@@ -53,15 +53,15 @@ const updateSuccess = currencyExchange => {
     return {
         type: actionTypes.UPDATE_SUCCESS,
         currencyExchange
-    }
-}
+    };
+};
 
 const updateFail = error => {
     return {
         type: actionTypes.UPDATE_FAIL,
         error
-    }
-}
+    };
+};
 
 export const update = (currency, currencyExchange) => {
     return async (dispatch) => {
@@ -77,6 +77,6 @@ export const update = (currency, currencyExchange) => {
         } catch (error) {
             let errorMessage = 'Something Went Wrong';
             dispatch(updateFail(errorMessage));
-        }
-    }
-}
+        };
+    };
+};

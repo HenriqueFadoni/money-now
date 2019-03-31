@@ -12,14 +12,6 @@ import BackgroundVideo from './mainPage/BackgroundVideo/BackgroundVideo';
 
 class App extends Component {
   state = {
-    currencyExchange: {
-      base: '',
-      toCurrency: null,
-      baseValue: 0,
-      currencyValue: 0,
-      date: '',
-      rates: {}
-    },
     showInput: false
   }
 
@@ -27,29 +19,23 @@ class App extends Component {
     this.props.onGetData();
   };
 
-  selectBaseHandler = event => this.getData(event.target.value);
-
-  getData = async(currency) => {
-    this.props.onUpdate(currency, this.props.currencyExchange);
+  selectBaseHandler = event => {
+    this.props.onUpdate(event.target.value, this.props.baseExchange);
   }
 
   selectToHandler = event => {
-    let update = {
-      ...this.props.currencyExchange,
-      toCurrency: event.target.value
-    };
-    this.setState({ currencyExchange: update });
+    this.props.onFindRateSelect(event.target.value);
   };
 
   findRate = event => {
     event.preventDefault();
     event.currentTarget.reset();
 
-    const value = Math.round(this.props.currencyExchange.rates[this.props.currencyExchange.toCurrency] * 100) / 100;
+    const value = Math.round(this.props.baseExchange.rates[this.props.currencyExchange] * 100) / 100;
     let update = {
       ...this.state,
-      currencyExchange: {
-        ...this.props.currencyExchange,
+      baseExchange: {
+        ...this.props.baseExchange,
         baseValue: 1,
         currencyValue: value
       },
@@ -60,7 +46,7 @@ class App extends Component {
   }
 
   render() {
-    const rates = this.props.currencyExchange.rates;
+    const rates = this.props.baseExchange.rates;
     console.log(rates)
     let arrayRates = [];
     let button = false;
@@ -75,7 +61,7 @@ class App extends Component {
       );
     }
 
-    if (this.props.currencyExchange.base !== "" && this.props.currencyExchange.toCurrency) {
+    if (this.props.baseExchange.base !== "" && this.props.baseExchange.toCurrency) {
       button = true;
     }
 
@@ -99,8 +85,8 @@ class App extends Component {
 
             <div className="form__container">
               <Form
-                baseValue={this.props.currencyExchange.baseValue}
-                currencyValue={this.props.currencyExchange.currencyValue}
+                baseValue={this.props.baseExchange.baseValue}
+                currencyValue={this.props.baseExchange.currencyValue}
                 findRate={this.findRate}
                 showInputs={this.state.showInput}
                 showBtn={button} />
@@ -114,7 +100,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currencyExchange: state.getData,
+    baseExchange: state.getData,
+    currencyExchange: state.findRate,
     error: state.getData.error
   }
 }
@@ -122,7 +109,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGetData: () => dispatch(action.getData()),
-    onUpdate: (currency, currencyExchange) => dispatch(action.update(currency, currencyExchange))
+    onUpdate: (currency, baseExchange) => dispatch(action.update(currency, baseExchange)),
+    onFindRateSelect: rate => dispatch(action.findRateSelect(rate))
   }
 }
 
