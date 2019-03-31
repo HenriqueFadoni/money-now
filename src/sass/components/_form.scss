@@ -9,7 +9,7 @@
         grid-template-rows: repeat(3, minmax(min-content, 10rem));
     };
 
-    &__container {
+    &__display {
         grid-column: 1 / span 2;
         grid-row: 2 / span 2;
         

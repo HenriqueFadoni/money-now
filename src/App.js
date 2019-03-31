@@ -70,7 +70,7 @@ class App extends Component {
               rates={arrayRates}
               selectHandler={this.selectToHandler} />
 
-            <div className="form__container">
+            <div className="form__display">
               <Form
                 findRate={this.findRate}
                 showInputs={this.state.showInput}
