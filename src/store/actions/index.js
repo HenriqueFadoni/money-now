@@ -4,5 +4,6 @@ export {
 } from './getData';
 
 export {
-    findRateSelect
+    findRateSelect,
+    findRateCalc
 } from './findRate';

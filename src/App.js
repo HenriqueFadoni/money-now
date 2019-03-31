@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as action from './store/actions/index';
-import axios from 'axios';
 
 import './sass/main.scss';
 
@@ -31,23 +30,13 @@ class App extends Component {
     event.preventDefault();
     event.currentTarget.reset();
 
-    const value = Math.round(this.props.baseExchange.rates[this.props.currencyExchange] * 100) / 100;
-    let update = {
-      ...this.state,
-      baseExchange: {
-        ...this.props.baseExchange,
-        baseValue: 1,
-        currencyValue: value
-      },
-      showInput: true
-    };
+    this.props.onFindRateCalc(this.props.baseExchange.rates[this.props.currencyExchange.toCurrency]);
 
-    this.setState(update);
+    this.setState({showInput: true});
   }
 
   render() {
     const rates = this.props.baseExchange.rates;
-    console.log(rates)
     let arrayRates = [];
     let button = false;
 
@@ -61,7 +50,7 @@ class App extends Component {
       );
     }
 
-    if (this.props.baseExchange.base !== "" && this.props.baseExchange.toCurrency) {
+    if (this.props.baseExchange.base !== "" && this.props.currencyExchange.toCurrency) {
       button = true;
     }
 
@@ -85,8 +74,8 @@ class App extends Component {
 
             <div className="form__container">
               <Form
-                baseValue={this.props.baseExchange.baseValue}
-                currencyValue={this.props.baseExchange.currencyValue}
+                baseValue={this.props.currencyExchange.baseValue}
+                currencyValue={this.props.currencyExchange.currencyValue}
                 findRate={this.findRate}
                 showInputs={this.state.showInput}
                 showBtn={button} />
@@ -110,7 +99,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onGetData: () => dispatch(action.getData()),
     onUpdate: (currency, baseExchange) => dispatch(action.update(currency, baseExchange)),
-    onFindRateSelect: rate => dispatch(action.findRateSelect(rate))
+    onFindRateSelect: rate => dispatch(action.findRateSelect(rate)),
+    onFindRateCalc: rate => dispatch(action.findRateCalc(rate))
   }
 }
 

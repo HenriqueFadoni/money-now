@@ -12,3 +12,4 @@ export const UPDATE_FAIL = 'UPDATE_FAIL';
 // Find Rate
 
 export const FIND_RATE_SELECT = 'FIND_RATE_SELECT';
+export const FIND_RATE_RESULT = 'FIND_RATE_RESULT';
