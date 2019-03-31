@@ -29,15 +29,8 @@ class App extends Component {
 
   selectBaseHandler = event => this.getData(event.target.value);
 
-  getData = async (currency) => {
-    const { data } = await axios.get(`https://api.exchangeratesapi.io/latest?base=${currency}`); // ANOTHER
-    let update = {
-      ...this.props.currencyExchange,
-      base: data.base,
-      date: data.date,
-      rates: data.rates
-    };
-    this.setState({ currencyExchange: update });
+  getData = async(currency) => {
+    this.props.onUpdate(currency, this.props.currencyExchange);
   }
 
   selectToHandler = event => {
@@ -121,14 +114,15 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currencyExchange: state.getData.currencyExchange,
+    currencyExchange: state.getData,
     error: state.getData.error
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetData: () => dispatch(action.getData())
+    onGetData: () => dispatch(action.getData()),
+    onUpdate: (currency, currencyExchange) => dispatch(action.update(currency, currencyExchange))
   }
 }
 

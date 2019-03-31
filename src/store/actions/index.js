@@ -1,3 +1,4 @@
 export {
-    getData
+    getData,
+    update
 } from './getData';
