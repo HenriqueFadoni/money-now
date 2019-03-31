@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-
 // -----------------------------------------------
 // FETCH DATA FROM THE SERVER AND INITIALIZE THE STATE
 
@@ -24,7 +23,6 @@ const getDataFail = error => {
         error: error
     };
 };
-
 
 export const getData = () => {
     return async (dispatch) => {
