@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as action from './store/actions/index';
 
-import './sass/main.scss';
-
+import Title from './mainPage/Title/Title';
+import BackgroundVideo from './mainPage/BackgroundVideo/BackgroundVideo';
 import BaseCurrencySelector from './mainPage/Form/Selectors/Base/BaseCurrencySelector';
 import ToCurrencySelector from './mainPage/Form/Selectors/Currency/ToCurrencySelector';
 import Form from './mainPage/Form/Form';
-import BackgroundVideo from './mainPage/BackgroundVideo/BackgroundVideo';
+import './sass/main.scss';
 
 class App extends Component {
   state = {
@@ -59,9 +59,7 @@ class App extends Component {
         <BackgroundVideo />
 
         <div className="home">
-          <h1 className="h1-white">
-            money <span className="text-green">now</span>
-          </h1>
+          <Title />
 
           <section className="form">
             <BaseCurrencySelector
@@ -101,6 +99,5 @@ const mapDispatchToProps = dispatch => {
     onFindRateCalc: rate => dispatch(action.findRateCalc(rate))
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
