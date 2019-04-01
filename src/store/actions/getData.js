@@ -30,13 +30,7 @@ export const getData = () => {
 
         try {
             const { data } = await axios.get(`https://api.exchangeratesapi.io/latest`);
-            let update = {
-                base: 'EUR',
-                date: '',
-                rates: data.rates
-            };
-
-            dispatch(getDataSuccess(update));
+            dispatch(getDataSuccess(data));
         } catch (error) {
             let errorMessage = 'Something Went Wrong. Try again later'
             dispatch(getDataFail(errorMessage));

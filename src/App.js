@@ -37,14 +37,14 @@ class App extends Component {
 
   render() {
     const rates = this.props.baseExchange.rates;
-    let arrayRates = [];
     let button = false;
+    let arrayRates = [];
 
     for (let rate in rates) {
       arrayRates.push(
         <option
-          value={`${rate}`}
-          key={`${rate}`}>
+          value={rate}
+          key={rate}>
           {rate}
         </option>
       );
