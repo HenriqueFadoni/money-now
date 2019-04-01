@@ -29,7 +29,7 @@ export const getData = () => {
         dispatch(getDataStart());
 
         try {
-            const { data } = await axios.get(`https://api.exchangeratesapi.io/latest`);
+            const { data } = await axios.get('https://api.exchangeratesapi.io/latest');
             dispatch(getDataSuccess(data));
         } catch (error) {
             let errorMessage = 'Something Went Wrong. Try again later'

@@ -29,25 +29,25 @@ class App extends Component {
   findRate = event => {
     event.preventDefault();
     event.currentTarget.reset();
-    
+
     this.props.onFindRateCalc(this.props.baseExchange.rates[this.props.currencyExchange.toCurrency]);
 
     this.setState({ showInput: true });
   }
 
   render() {
-    const rates = this.props.baseExchange.rates;
-    let button = false;
+    let rates = Object.keys(this.props.baseExchange.rates).sort();
     let arrayRates = [];
+    let button = false;
 
-    for (let rate in rates) {
-      arrayRates.push(
+    if (!arrayRates.length) {
+      arrayRates = rates.map(rate => (
         <option
           value={rate}
           key={rate}>
           {rate}
         </option>
-      );
+      ));
     }
 
     if (this.props.currencyExchange.toCurrency) {

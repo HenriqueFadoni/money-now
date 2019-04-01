@@ -7,7 +7,7 @@ const BaseCurrencySelector = props => (
         onChange={event => props.selectHandler(event)}
         required>
 
-        <option value="EUR-D" hidden>Default Value(EURO)</option>
+        <option value="EUR">Default Value(EURO)</option>
         {props.rates}
     </select>
 );
