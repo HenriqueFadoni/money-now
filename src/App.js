@@ -29,7 +29,7 @@ class App extends Component {
   findRate = event => {
     event.preventDefault();
     event.currentTarget.reset();
-
+    
     this.props.onFindRateCalc(this.props.baseExchange.rates[this.props.currencyExchange.toCurrency]);
 
     this.setState({ showInput: true });
