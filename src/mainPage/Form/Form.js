@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import FindRate from './Button/FindRate';
 import BaseInput from './Inputs/Base/BaseInput';
