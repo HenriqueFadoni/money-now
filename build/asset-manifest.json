@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.3918a125.chunk.css",
-  "main.js": "/static/js/main.4a8e4dd2.chunk.js",
-  "main.js.map": "/static/js/main.4a8e4dd2.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-  "static/js/2.c8efdbb0.chunk.js": "/static/js/2.c8efdbb0.chunk.js",
-  "static/js/2.c8efdbb0.chunk.js.map": "/static/js/2.c8efdbb0.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.310f7a185f28605b2f864f4553973d2f.js": "/precache-manifest.310f7a185f28605b2f864f4553973d2f.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.3918a125.chunk.css.map": "/static/css/main.3918a125.chunk.css.map",
-  "static/media/New-jumbo.mp4": "/static/media/New-jumbo.3d3d387b.mp4"
+  "main.css": "/money-now/static/css/main.46b68e4f.chunk.css",
+  "main.js": "/money-now/static/js/main.bae1ef45.chunk.js",
+  "main.js.map": "/money-now/static/js/main.bae1ef45.chunk.js.map",
+  "runtime~main.js": "/money-now/static/js/runtime~main.b4febeaf.js",
+  "runtime~main.js.map": "/money-now/static/js/runtime~main.b4febeaf.js.map",
+  "static/js/2.c8efdbb0.chunk.js": "/money-now/static/js/2.c8efdbb0.chunk.js",
+  "static/js/2.c8efdbb0.chunk.js.map": "/money-now/static/js/2.c8efdbb0.chunk.js.map",
+  "index.html": "/money-now/index.html",
+  "precache-manifest.d9ddd96293861dcbbe589e276a6d1f86.js": "/money-now/precache-manifest.d9ddd96293861dcbbe589e276a6d1f86.js",
+  "service-worker.js": "/money-now/service-worker.js",
+  "static/css/main.46b68e4f.chunk.css.map": "/money-now/static/css/main.46b68e4f.chunk.css.map",
+  "static/media/New-jumbo.mp4": "/money-now/static/media/New-jumbo.3d3d387b.mp4"
 }
