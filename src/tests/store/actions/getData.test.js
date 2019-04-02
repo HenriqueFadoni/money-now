@@ -1,57 +1,58 @@
-import { createStore, applyMiddleware } from 'redux';
+// IMPORTS
+import configureMockStore from "redux-mock-store";
 import reduxThunk from 'redux-thunk';
-import { rootReducer } from '../../../store/reducers/index';
-
-import axios from 'axios';
 
 import { getData, update } from '../../../store/actions/getData';
 
-xdescribe('GetData action creator', () => {
-    let store
+// MOCKING STORE
+
+export const mockStore = configureMockStore([reduxThunk]);
+
+// FINDING SIMILAR ACTIONS ON THE STORE
+
+export function getAction(store, type) {
+    const action = store.getActions().find(action => action.type === type);
+    if (action) return Promise.resolve(action);
+
+    return new Promise(resolve => {
+        store.subscribe(() => {
+            const action = store.getActions().find(action => action.type === type);
+            if (action) resolve(action);
+        });
+    });
+}
+
+// ACTUAL TESTS
+
+describe('GetData Action Creator', () => {
+    let store;
+
     beforeEach(() => {
-        store = createStore(rootReducer, applyMiddleware(reduxThunk));
+        store = mockStore();
     });
 
-    xtest('Fetch Data from API Successfuly', async () => {
-        // const { data } = await axios.get('https://api.exchangeratesapi.io/latest');
-        // const dataReceived = {
-        //     base: 'EUR',
-        //     date: '',
-        //     rates: data.rates
-        // };
-
-        // return store.dispatch(getData())
-        //     .then(() => {
-        //         const newState = store.getState();
-        //         expect(newState.getData.base).toBe('EUR');
-        //         expect(newState.getData.rates).toEqual(dataReceived.rates);
-        //     });
+    // Making a shallow comparison between the Objects once their values can change.
+    test('Fetch Data as soon as the APP runs', async () => {
+        store.dispatch(getData());
+        expect(await getAction(store, "GET_DATA_START")).toEqual({ type: "GET_DATA_START" });
+        expect(await getAction(store, "GET_DATA_SUCCESS")).toMatchObject({
+            type: "GET_DATA_SUCCESS",
+            currencyExchange: {
+                base: "EUR",
+                rates: {}
+            }
+        });
     });
 
-    xtest('Update State Successfuly', async () => {
-        // const initialState = {
-        //     base: 'EUR',
-        //     date: '',
-        //     rates: { 
-        //         BGN: 1.3038666667,
-        //         NZD: 1.1,
-        //         ILS: 2.7176
-        //     }
-        // }
-
-        // const { data } = await axios.get('https://api.exchangeratesapi.io/latest?base=CAD');
-        // const dataReceived = {
-        //     ...initialState,
-        //     base: data.base,
-        //     date: data.date,
-        //     rates: data.rates
-        // };
-
-        // return store.dispatch(update('CAD', initialState))
-        //     .then(() => {
-        //         const newState = store.getState();
-        //         console.log(newState);
-        //         expect(newState.getData).toEqual(dataReceived);
-        //     });
+    // Making a shallow comparison between the two Objects received once their value can change
+    test('Update State Successfuly when a search is done', async () => {
+        store.dispatch(update('CAD', {}));
+        expect(await getAction(store, "UPDATE_SUCCESS")).toMatchObject({
+            type: "UPDATE_SUCCESS",
+            currencyExchange: {
+                base: "CAD",
+                rates: {}
+            }
+        })
     });
 });

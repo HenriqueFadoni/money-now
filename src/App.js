@@ -36,11 +36,11 @@ class App extends Component {
   }
 
   render() {
-    let rates = Object.keys(this.props.baseExchange.rates).sort();
     let arrayRates = [];
     let button = false;
 
     if (!arrayRates.length) {
+      let rates = Object.keys(this.props.baseExchange.rates).sort();
       arrayRates = rates.map(rate => (
         <option
           value={rate}
