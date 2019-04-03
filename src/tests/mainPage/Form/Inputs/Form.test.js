@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Form from '../../../../mainPage/Form/Form';
 import BaseInput from '../../../../mainPage/Form/Inputs/Base/BaseInput';
+import CurrencyInput from '../../../../mainPage/Form/Inputs/Currency/CurrencyInput';
 
 describe('Form displaying correctly BaseInput and CurrencyInput', () => {
     let wrapper;
@@ -17,7 +18,7 @@ describe('Form displaying correctly BaseInput and CurrencyInput', () => {
     });
     
     test('CurrencyInput should be rendered', () => {
-        const component = wrapper.find(BaseInput);
+        const component = wrapper.find(CurrencyInput);
         expect(component.length).toBe(1);
     });
 });

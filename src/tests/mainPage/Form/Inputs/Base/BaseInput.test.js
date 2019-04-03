@@ -8,7 +8,17 @@ const setup = (initialState = {}) => {
     return wrapper
 }
 
-test('Checks if BASINPUT is receiving the CORRECT OBJECT', () => {
+test('Checks if BASEINPUT is receiving the CORRECT OBJECT', () => {
+    const wrapper = setup({
+        currencyExchange: {
+            baseValue: 1
+        }
+    });
+    const BaseInputSuccess = wrapper.instance().props.currencyExchange.baseValue;
+    expect(BaseInputSuccess).toBe(1);
+});
+
+test('Checks if BASEINPUT is not undefined', () => {
     const wrapper = setup({
         currencyExchange: {
             baseValue: 1
