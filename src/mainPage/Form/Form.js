@@ -7,7 +7,7 @@ import CurrencyInput from './Inputs/Currency/CurrencyInput';
 const Form = props => {
     let inputs = (
         <>
-            <BaseInput />
+            <BaseInput/>
             <CurrencyInput />
         </>
     );
